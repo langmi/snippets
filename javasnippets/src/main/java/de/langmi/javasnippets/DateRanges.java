@@ -12,7 +12,10 @@ public class DateRanges {
      * @return 
      * @see http://c2.com/cgi/wiki?TestIfDateRangesOverlap
      */
-    public boolean testIfDateRangesOverlap() {
+    public boolean testIfDateRangesOverlap(String firstDateFrom,
+                                           String firstDateTo,
+                                           String secondDateFrom, 
+                                           String secondDateTo) {
         return false;
     }
 }
