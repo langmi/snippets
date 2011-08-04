@@ -15,8 +15,8 @@
  */
 package de.langmi.javasnippets;
 
+import java.math.RoundingMode;
 import java.text.NumberFormat;
-import static org.junit.Assert.*;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -37,13 +37,18 @@ public class NumberParseExamplesTest {
      */
     @Test
     public void testDoubleGerman() throws Exception {
+        System.out.println("testDoubleGerman");
         this.testParse(
                 new Object[][]{
                     {"11,01", 11.01d},
                     {"1.000,00", 1000d},
                     {"1,0", 1d},
                     {"1,00", 1d},
-                    {"1,38", 1.38d}},
+                    {"1,38", 1.38d},
+                    {"1e-06", 1.38d},
+                    {"1E6", 1.38d},
+                    {"1E-6", 1.38d},
+                    {"1e-6", 1.38d}},
                 Locale.GERMAN);
     }
 
@@ -54,13 +59,22 @@ public class NumberParseExamplesTest {
      */
     @Test
     public void testDoubleUk() throws Exception {
+        System.out.println("testDoubleUk");
         this.testParse(
                 new Object[][]{
                     {"11.01", 11.01d},
                     {"1,000.00", 1000d},
                     {"1.0", 1d},
                     {"1.00", 1d},
-                    {"1.38", 1.38d}},
+                    {"1.38", 1.38d},
+                    {"1e-06", 1.38d},
+                    {"1E6", 1.38d},
+                    {"1E-6", 1.38d},
+                    {"1E-06", 1.38d},
+                    {"1e-6", 1.38d},
+                    {"1.0E-6", 123},
+                    {"0.000001", 1.38d},
+                    {"1@", 1.38d}},
                 Locale.UK);
     }
 
@@ -76,7 +90,9 @@ public class NumberParseExamplesTest {
         Map<String, Double> map = ArrayUtils.toMap(data);
         for (Entry<String, Double> entry : map.entrySet()) {
             Double result = NumberParseExamples.parseDouble(entry.getKey(), locale);
-            assertEquals(entry.getValue(), result);
+            f.setRoundingMode(RoundingMode.UNNECESSARY);
+            System.out.println(entry.getKey() + ":" + result.toString() + ":" + f.format(result) + ":" + new Float(result.floatValue()).toString());
+            //assertEquals(entry.getValue(), result);
         }
     }
 }

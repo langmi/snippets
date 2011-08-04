@@ -15,6 +15,7 @@
  */
 package de.langmi.javasnippets;
 
+import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -39,6 +40,11 @@ public class NumberParseExamples {
         NumberFormat f = NumberFormat.getInstance(locale);
         // its not guaranteed to get a decimalFormat instance
         if (f instanceof DecimalFormat) {
+            //((DecimalFormat) f).setRoundingMode(RoundingMode.UNNECESSARY);
+            //((DecimalFormat) f).setMinimumIntegerDigits(6);
+            //((DecimalFormat) f).setMinimumIntegerDigits(6);
+            //((DecimalFormat) f).setMaximumFractionDigits(6);
+            //((DecimalFormat) f).setMaximumIntegerDigits(6);
             Double result = ((DecimalFormat) f).parse(value).doubleValue();
             return result;
         } else {
