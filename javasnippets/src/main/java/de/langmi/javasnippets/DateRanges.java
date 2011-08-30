@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2011 Michael R. Lange <michael.r.lange@langmi.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -16,8 +16,9 @@
 package de.langmi.javasnippets;
 
 /**
- * Hello world!
+ * TODO: implement
  *
+ * @author Michael R. Lange <michael.r.lange@langmi.de>
  */
 public class DateRanges {
 

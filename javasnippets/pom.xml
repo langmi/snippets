@@ -34,21 +34,51 @@
         </developer>
     </developers>
     <properties>
+        <!-- compiler settings -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.jdk>1.6</maven.jdk>
+        <maven.compiler.debug>true</maven.compiler.debug>
+        <maven.compiler.optimize>false</maven.compiler.optimize>
+        <!-- test settings -->
+        <maven.surefire.forkmode>always</maven.surefire.forkmode>
+        <log4j.configuration>log4j/log4j.properties</log4j.configuration>
+        <!-- often used dependency versions -->
         <spring.framework.version>3.0.6.RELEASE</spring.framework.version>
+        <slf4j.version>1.6.2</slf4j.version>
     </properties>    
     <build>
         <plugins>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>${maven.jdk}</source>
+                    <target>${maven.jdk}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <debug>${maven.compiler.debug}</debug>
+                    <optimize>${maven.compiler.optimize}</optimize>
+                    <showDeprecation>true</showDeprecation>
+                </configuration>
+            </plugin> 
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-        </plugins>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>2.9</version>
+                <configuration>
+                    <systemPropertyVariables>
+                        <log4j.configuration>${log4j.configuration}</log4j.configuration>
+                    </systemPropertyVariables>
+                    <forkMode>${maven.surefire.forkmode}</forkMode>
+                    <argLine>-Xmx512m -XX:MaxPermSize=512m</argLine>
+                </configuration>
+            </plugin>
+        </plugins>        
     </build>
     <dependencies>
         <dependency>
@@ -56,6 +86,28 @@
             <artifactId>commons-lang</artifactId>
             <version>2.6</version>
         </dependency>
+        <!-- slf4j logging facade -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.16</version>
+        </dependency>
+        <!-- Spring Framework -->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-jdbc</artifactId>

@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2011 Michael R. Lange <michael.r.lange@langmi.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -44,6 +44,7 @@ public class TwoTablesRowMapper implements RowMapper<Map<String, Object>> {
      * @return
      * @throws SQLException 
      */
+    @Override
     public Map<String, Object> mapRow(ResultSet rs, int rowNum) throws SQLException {
         Map<String, Object> resultMap = new HashMap<String, Object>();
 

@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2011 Michael R. Lange <michael.r.lange@langmi.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -34,9 +34,12 @@ public class NumberParseExamplesTest {
     @Test
     public void testDoubleParsingProblems() throws Exception {
         // double parses just ignores and stops at wrong characters
+        // here we see "1@".equals(1d) wich is plain wrong :-)
         assertEquals(Double.valueOf(1d),
                      NumberParseExamples.parseDouble("1@", Locale.UK));
-        // scientific notation, but wrong one, capital "E" needed, works either/sadly
+        // scientific notation, but wrong one, capital "E" needed
+        // same problem as with "1@", but with wrong scientific format
+        // here "1e6".equals(1d)
         assertEquals(Double.valueOf(1d),
                      NumberParseExamples.parseDouble("1e6", Locale.UK));
     }
@@ -48,7 +51,7 @@ public class NumberParseExamplesTest {
      */
     @Test
     public void testDoubleScientificNotation() throws Exception {
-        // Locale does not matter
+        // Locale does not matter for the problem of using wrong e Letter (E is needed)
         // scientific notation, but wrong one, capital "E" needed
         assertEquals(Double.valueOf(1d),
                      NumberParseExamples.parseDouble("1e6", Locale.GERMAN));
@@ -102,7 +105,7 @@ public class NumberParseExamplesTest {
         // simple with 1000 point and comma
         assertEquals(Double.valueOf(1000d),
                      NumberParseExamples.parseDouble("1,000.00", locale));
-        // comma just with 1
+        // comma just with 1 zero
         assertEquals(Double.valueOf(1d),
                      NumberParseExamples.parseDouble("1.0", locale));
         // more zeroes

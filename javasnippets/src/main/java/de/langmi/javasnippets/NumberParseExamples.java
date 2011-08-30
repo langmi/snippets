@@ -1,4 +1,4 @@
-/*
+/**
  * Copyright 2011 Michael R. Lange <michael.r.lange@langmi.de>.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -15,7 +15,6 @@
  */
 package de.langmi.javasnippets;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.util.Locale;
@@ -40,6 +39,7 @@ public class NumberParseExamples {
         NumberFormat f = NumberFormat.getInstance(locale);
         // its not guaranteed to get a decimalFormat instance
         if (f instanceof DecimalFormat) {
+            // some configuration possibilities
             //((DecimalFormat) f).setRoundingMode(RoundingMode.UNNECESSARY);
             //((DecimalFormat) f).setMinimumIntegerDigits(6);
             //((DecimalFormat) f).setMinimumIntegerDigits(6);
