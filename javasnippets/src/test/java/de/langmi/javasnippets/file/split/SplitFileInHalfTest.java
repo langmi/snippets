@@ -63,7 +63,12 @@ public class SplitFileInHalfTest {
     }
 
     @Test
-    public void testGetLineCountJava15() throws Exception {
+    public void testGetLineCount() throws Exception {
         assert SplitFileInHalf.getLineCount(INPUT_FILE) == EXPECTED_COUNT;
+    }
+
+    @Test
+    public void testGetLineCountAlternative() throws Exception {
+        assert SplitFileInHalf.getLineCountAlternative(INPUT_FILE) == EXPECTED_COUNT;
     }
 }

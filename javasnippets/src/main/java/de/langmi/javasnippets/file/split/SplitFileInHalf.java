@@ -20,7 +20,9 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.InputStreamReader;
+import java.io.LineNumberReader;
 import java.io.OutputStreamWriter;
 import java.util.Scanner;
 
@@ -130,6 +132,26 @@ public class SplitFileInHalf {
         } finally {
             if (scanner != null) {
                 scanner.close();
+            }
+        }
+    }
+
+    /**
+     * Nice short version from <a href="http://stackoverflow.com/a/5342096/62201">stackoverflow</a>.
+     *
+     * @param file
+     * @return
+     * @throws Exception 
+     */
+    public static int getLineCountAlternative(String file) throws Exception {
+        LineNumberReader lnr = null;
+        try {
+            lnr = new LineNumberReader(new FileReader(file));
+            lnr.skip(Long.MAX_VALUE);
+            return lnr.getLineNumber();
+        } finally {
+            if (lnr != null) {
+                lnr.close();
             }
         }
     }
