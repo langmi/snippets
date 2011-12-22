@@ -28,8 +28,8 @@ public class StringUtilsTest {
 
     @Test
     public void testStripEnd() {
-        // Does StringUtils.stripEnd remove whitespace even, when it is only a 
-        // one-character string?
+        // Does StringUtils.stripEnd removes whitespace, even when it is only a 
+        // one-character string
         assertEquals("", StringUtils.stripEnd(" ", null));
     }
 }

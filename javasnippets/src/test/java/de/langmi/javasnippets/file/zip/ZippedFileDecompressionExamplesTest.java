@@ -29,7 +29,7 @@ public class ZippedFileDecompressionExamplesTest {
 
     private static final Logger LOG = LoggerFactory.getLogger(ZippedFileDecompressionExamples.class);
     private static final String PATH_TO_COMPRESSED_TEST_FILE = "src/test/resources/input/input.txt.zip";
-    private static final String OUTPUT_PATH = "target/test-outputs/";
+    private static final String OUTPUT_PATH = "target/zip-test-outputs/";
     private static final int EXPECTED_COUNT = 20;
 
     @Test
@@ -56,6 +56,6 @@ public class ZippedFileDecompressionExamplesTest {
     private void endTimerAndLogDuration(long startTime) {
         // end timer
         long endTime = System.nanoTime();
-        LOG.info("readDecompressToFile:" + String.valueOf((endTime - startTime) / 1000000));
+        LOG.info("duration of readDecompressToFile:" + String.valueOf((endTime - startTime) / 1000000));
     }
 }
