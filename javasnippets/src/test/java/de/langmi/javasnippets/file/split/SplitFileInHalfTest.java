@@ -49,7 +49,7 @@ public class SplitFileInHalfTest {
                 input.close();
             }
         }
-        // check successful writingg java
+        // check successful writing java
         assert SplitFileInHalf.getLineCount(OUTPUT_FILE) == EXPECTED_COUNT;
     }
 
