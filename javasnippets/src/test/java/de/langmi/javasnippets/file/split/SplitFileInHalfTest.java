@@ -28,6 +28,7 @@ import org.junit.Test;
 public class SplitFileInHalfTest {
 
     private static final String INPUT_FILE = "src/test/resources/input/input.txt";
+    private static final String INPUT_FILE_WITHOUT_LINE_ENDING = "src/test/resources/input/input_without_line_ending.txt";
     private static final String OUTPUT_FILE = "target/output.txt";
     private static final String OUTPUT_FILE_FIRST_HALF = "target/file-split-output.txt";
     private static final String OUTPUT_FILE_SECOND_HALF = "target/file-split-output-2.txt";
@@ -65,10 +66,12 @@ public class SplitFileInHalfTest {
     @Test
     public void testGetLineCount() throws Exception {
         assert SplitFileInHalf.getLineCount(INPUT_FILE) == EXPECTED_COUNT;
+        assert SplitFileInHalf.getLineCount(INPUT_FILE_WITHOUT_LINE_ENDING) == EXPECTED_COUNT;
     }
 
     @Test
     public void testGetLineCountAlternative() throws Exception {
         assert SplitFileInHalf.getLineCountAlternative(INPUT_FILE) == EXPECTED_COUNT;
+        assert SplitFileInHalf.getLineCountAlternative(INPUT_FILE_WITHOUT_LINE_ENDING) == EXPECTED_COUNT;
     }
 }

@@ -137,7 +137,7 @@ public class SplitFileInHalf {
     }
 
     /**
-     * Nice short version from <a href="http://stackoverflow.com/a/5342096/62201">stackoverflow</a>.
+     * Nice short version from <a href="http://stackoverflow.com/a/1647015/62201">stackoverflow</a>.
      *
      * @param file
      * @return
@@ -147,8 +147,12 @@ public class SplitFileInHalf {
         LineNumberReader lnr = null;
         try {
             lnr = new LineNumberReader(new FileReader(file));
-            lnr.skip(Long.MAX_VALUE);
-            return lnr.getLineNumber();
+            String line = null;
+            int count = 0;
+            while ((line = lnr.readLine()) != null) {
+                count = lnr.getLineNumber();
+            }
+            return count;
         } finally {
             if (lnr != null) {
                 lnr.close();
